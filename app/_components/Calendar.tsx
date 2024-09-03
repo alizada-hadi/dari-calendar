@@ -73,8 +73,9 @@ export const Calendar: React.FC<CalendarProps> = ({
 
   const renderDays = (month: moment.Moment) => {
     const startOfMonth = month.clone().startOf("jMonth");
-    const startDay = startOfMonth.day();
-    const daysInMonth = moment.jDaysInMonth(month.jYear(), month.jMonth() + 1);
+    const startDay = startOfMonth.day() === 6 ? 0 : startOfMonth.day() + 1;
+
+    const daysInMonth = moment.jDaysInMonth(month.jYear(), month.jMonth());
 
     const days = [];
     for (let i = 0; i < startDay; i++) {
